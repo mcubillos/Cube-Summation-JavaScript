@@ -2,22 +2,34 @@ var matrix = [];
 
 function log (text) {
   console.log(text)
-  if (document) document.querySelector('#output').innerText += text + '\n'
+  if (document) document.querySelector('#salida').innerText += text + '\n'
 }
 
-document.getElementById('file').onchange = function(){
-  var file = this.files[0];
-  var reader = new FileReader();
-  reader.onload = function(progressEvent){
-    // By lines
-    var lines = this.result.split('\n');
-    processData(lines);
-  };
-  reader.readAsText(file);
-};
+window.onload = function() {
+    var fileInput = document.getElementById('file');
+
+    fileInput.addEventListener('change', function(e) {
+        var file = fileInput.files[0];
+        var textType = /text.*/;
+
+        if (file.type.match(textType)) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var lines = this.result.split('\n');
+                processData(lines);
+            }
+
+            reader.readAsText(file);    
+        } else {
+            log("File not supported!");
+        }
+    });
+}
 
 function processData(input) {
     var index = 0;
+    document.getElementById('salida').innerHTML = "";
     var test_cases = input[index];
     if(1<=test_cases && test_cases<=50){
         while(test_cases>0){
