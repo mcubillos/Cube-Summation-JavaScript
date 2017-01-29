@@ -64,7 +64,7 @@ function processData(input) {
                                 query(x1,y1,z1,x2,y2,z2);
                             }
                         }else{
-                            log("Esta operación no es valida")
+                            log("Esta operación no es valida");
                         }
                         M--;
                     }
