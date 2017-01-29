@@ -53,7 +53,7 @@ function processData(input) {
                             if((0<=x && x<=N)&&(0<=y && y<=N)&&(0<=z && z<=N)){
                               matrix.subset(math.index(x,y,z),W);
                             }
-                        }else{
+                        }else if(operation === "QUERY"){
                             var x1 = parseInt(operation_line[1]-1);
                             var y1 = parseInt(operation_line[2]-1);
                             var z1 = parseInt(operation_line[3]-1);
@@ -63,6 +63,8 @@ function processData(input) {
                             if((0<=x1 && x1<=x2 && x2<=N)&&(0<=y1 && y1<=y2 && y2<=N)&&(0<=z1 && z1<=z2 && z2<=N)){
                                 query(x1,y1,z1,x2,y2,z2);
                             }
+                        }else{
+                            log("Esta operación no es valida")
                         }
                         M--;
                     }
