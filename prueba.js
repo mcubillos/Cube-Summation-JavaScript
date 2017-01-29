@@ -46,11 +46,12 @@ function processData(input) {
                         var operation_line = input[index].split(" ");
                         var operation = operation_line[0];
                         if(operation === "UPDATE"){
+                            var w = Math.pow(10, 9);
                             var x = parseInt(operation_line[1]-1);
                             var y = parseInt(operation_line[2]-1);
                             var z = parseInt(operation_line[3]-1);
                             var W = parseInt(operation_line[4]);
-                            if((0<=x && x<=N)&&(0<=y && y<=N)&&(0<=z && z<=N)){
+                            if((0<=x && x<=N)&&(0<=y && y<=N)&&(0<=z && z<=N)&& (W > -(w) && W <= w)){
                               matrix.subset(math.index(x,y,z),W);
                             }
                         }else if(operation === "QUERY"){
